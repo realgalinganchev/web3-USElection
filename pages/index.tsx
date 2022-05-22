@@ -18,14 +18,14 @@ function Home() {
   return (
     <div>
       <Head>
-        <title>LimeAcademy-boilerplate</title>
+        <title>USElectihon</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <header>
         <nav>
-          <Link href="/">
-            <a>LimeAcademy-boilerplate</a>
+          <Link href={"/"}>
+            <p>USElection</p>
           </Link>
 
           <Account triedToEagerConnect={triedToEagerConnect} />
@@ -35,9 +35,7 @@ function Home() {
       <main>
         <h1>
           Welcome to{" "}
-          <a href="https://github.com/LimeChain/next-web3-boilerplate">
-            LimeAcademy-boilerplate
-          </a>
+          <a target="_blank" rel="noreferrer" href="https://ropsten.etherscan.io/address/0x8eee03162f053c9d18f3169aa8fd9eca7e9dab99#code"> USElection Smart Contract</a>
         </h1>
 
         {isConnected && (
