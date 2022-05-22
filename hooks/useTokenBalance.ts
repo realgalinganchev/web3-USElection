@@ -1,5 +1,5 @@
 import useSWR from "swr";
-import type { ERC20 } from "../'./contracts/types'/ERC20";
+import type { ERC20 } from "../contracts/types";
 import useKeepSWRDataLiveAsBlocksArrive from "./useKeepSWRDataLiveAsBlocksArrive";
 import useTokenContract from "./useTokenContract";
 
