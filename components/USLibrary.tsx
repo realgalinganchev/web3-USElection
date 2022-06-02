@@ -1,8 +1,10 @@
 import type { Web3Provider } from "@ethersproject/providers";
 import { useWeb3React } from "@web3-react/core";
+import { utils } from "ethers";
 import { useEffect, useState } from "react";
 import useUSElectionContract from "../hooks/useUSElectionContract";
 import Loader from "./Loader";
+
 
 type USContract = {
   contractAddress: string;
@@ -109,6 +111,19 @@ const USLibrary = ({ contractAddress }: USContract) => {
     setStateSeats(0);
   }
 
+
+
+  const signMessage = async () => {
+    const signer = await library.getSigner();
+    const messageHash = utils.solidityKeccak256(['string'], ["Yes, I signed the message"])
+    // return hashed representation of the string
+    // 0x2aa41cf7ca9c0caaca11e3504a314e2669ccbba6ccfe90f325ddfeb0f4fb65c9
+    const arrayfiedHash = utils.arrayify(messageHash);
+    const signedMessage = await signer.signMessage(arrayfiedHash);
+    console.log('signedMessage :>> ', signedMessage);
+  }
+
+
   return (
     <div className="results-form">
       <p>
@@ -165,6 +180,9 @@ const USLibrary = ({ contractAddress }: USContract) => {
       {isLoading &&
         <Loader txHash={txHash} />
       }
+
+      <button onClick={signMessage}>Sign Message</button>
+
       <style jsx>{`
         .results-form {
           display: flex;
